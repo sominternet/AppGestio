@@ -13,7 +13,6 @@ class PagesController extends Controller
     }
     public function repetidors()
     {
-        $repetidors = ['Repetidor1','Repetidor2','Repetidor3'];
-        return view('pages.repetidors')->with('repetidors' , $repetidors);
+
     }
 }

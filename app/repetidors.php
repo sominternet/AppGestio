@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class repetidor extends Model
+class repetidors extends Model
 {
-    //
     protected $table = 'repetidors';
     public $primaryKey = 'codi';
     public $timestamps = false;

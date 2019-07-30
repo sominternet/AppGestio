@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\repetidor;
+use App\repetidors;
 
 class RepetidorsController extends Controller
 {
@@ -14,7 +14,7 @@ class RepetidorsController extends Controller
      */
     public function index()
     {
-        return repetidor::all();
+        return repetidors::all();
         return view('repetidors.index');
     }
 
