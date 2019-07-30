@@ -14,6 +14,7 @@ class RepetidorsController extends Controller
      */
     public function index()
     {
+        return repetidor::all();
         return view('repetidors.index');
     }
 
