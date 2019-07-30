@@ -14,8 +14,8 @@ class RepetidorsController extends Controller
      */
     public function index()
     {
-        ///return repetidors::all();
-        return view('repetidors.index');
+        $llista_repetidors =  repetidors::all();
+        return view('repetidors.index')->with ('llista_repetidors', $llista_repetidors);
     }
 
     /**
@@ -47,7 +47,7 @@ class RepetidorsController extends Controller
      */
     public function show($id)
     {
-        //
+        return repetidors::find($id);
     }
 
     /**
