@@ -12,5 +12,5 @@
 */
 
 Route::get('/',  'PagesController@index' );
-Route::resource('repetidor','RepetidorsController');
+Route::resource('repetidors','RepetidorsController');
 
