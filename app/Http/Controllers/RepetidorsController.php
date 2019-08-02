@@ -26,7 +26,7 @@ class RepetidorsController extends Controller
      */
     public function create()
     {
-        //
+        return view ('repetidors.create');
     }
 
     /**
@@ -37,7 +37,29 @@ class RepetidorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this -> validate($request,[
+            'ciutat' => 'required',
+            'lat' => 'required',
+            'long' => 'required',
+            'ip_publica' => 'required',
+            'nom' => 'required',
+
+
+
+        ]);
+        $repetidor = new repetidors;
+        $repetidor->codi = $request->input('codi');
+        $repetidor->ciutat = $request->input('ciutat');
+        $repetidor->adreça = $request->input('adreça');
+        $repetidor->lat = $request->input('lat');
+        $repetidor->long = $request->input('long');
+        $repetidor->ip_publica = $request->input('ip_publica');
+        $repetidor->ip_privada_ppoe = $request->input('ip_privada_ppoe');
+        $repetidor->nom_radius = $request->input('nom_radius');
+        $repetidor->pwd_radius = $request->input('pwd_radius');
+        $repetidor->nom = $request->input('nom');
+        $repetidor->save();
+        return redirect('/repetidors')-> with('success','Repetidor insertat');
     }
 
     /**
