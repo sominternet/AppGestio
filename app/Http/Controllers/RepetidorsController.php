@@ -81,7 +81,8 @@ class RepetidorsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $repetidor = repetidors::find($id);
+        return view('repetidors.edit') ->with ('repetidor', $repetidor);
     }
 
     /**
@@ -93,7 +94,29 @@ class RepetidorsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this -> validate($request,[
+            'ciutat' => 'required',
+            'lat' => 'required',
+            'long' => 'required',
+            'ip_publica' => 'required',
+            'nom' => 'required',
+
+
+
+        ]);
+        $repetidor = repetidors::find($id);
+        $repetidor->codi = $request->input('codi');
+        $repetidor->ciutat = $request->input('ciutat');
+        $repetidor->adreça = $request->input('adreça');
+        $repetidor->lat = $request->input('lat');
+        $repetidor->long = $request->input('long');
+        $repetidor->ip_publica = $request->input('ip_publica');
+        $repetidor->ip_privada_ppoe = $request->input('ip_privada_ppoe');
+        $repetidor->nom_radius = $request->input('nom_radius');
+        $repetidor->pwd_radius = $request->input('pwd_radius');
+        $repetidor->nom = $request->input('nom');
+        $repetidor->save();
+        return redirect('/repetidors')-> with('success','Repetidor editat');
     }
 
     /**
@@ -104,6 +127,8 @@ class RepetidorsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $repetidor = repetidors::find($id);
+        $repetidor->delete();
+        return redirect('/repetidors')->with('success', 'Repetidor eliminat');
     }
 }
