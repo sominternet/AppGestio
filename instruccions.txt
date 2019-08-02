@@ -1,0 +1,23 @@
+Per a fer funcionar la aplicació fora de l'area local s'han de seguir alguns pasos:
+1-Realitzar un git-commit i un git-push
+2-accedir a la pagina de digital ocean
+3-Al droplet de la pagina en qüestió, hi ha un apartat anomenat acess, alli hi ha un botó que posa Launch console.
+4-Un cop presionat el botó s'obrirà una consola de login, accedir amb l'usuari forge i la contrasenya MOyIDKfmYImuGZFlUTkS
+5- entrar a la unica carpeta que hi ha
+6-obrir el fitxer .env amb l'editor de text nano, comanda: nano .env
+7-modificar aquest fitxer per a posar els parametres d'acces a la base de dades, s'han de modificar els següents camps: DB_CONNECTION=mysql
+DB_HOST=134.0.10.65
+DB_PORT=3306
+DB_DATABASE=auguteaplicacions
+DB_USERNAME=myaugute
+DB_PASSWORD=xGCYOm1V
+8-ctrl+x per a tancar el fitxer, guardar-lo conservant el mateix nom
+Fet això l'aplicació ja funcionara
+
+Si es volen realitzar canvis a l'aplicació i s'ha modificat a ma el fitxer .env el forge no podrà actualitzar el directori a traves de github, s'ha de desinstalar el directori i reinstalar-se seguint els següents pasos:
+Anant a la pagina del Forge, a la pestanya de sites i seleccionant el site en qüetsió, cal desinstalar el directori i reinstalar-lo:
+1-Baix de tot de la pagina actual hi ha el botó Unistall directory
+un cop fet això cal reinstalar-lo, nomes hi ha 2 opcions, git o wordpress, seleccionar git
+2-Ja hi hauria de ser pero si no hi es, escriure sominternet/AppGestio al nom del directori
+3-Dal de la pagina hi ha un boto que diu "Enable quick deploy", premel si es vol que el servidor s'actualitze cada vegada que es fa un push a github
+(Un cop fet aixo l'aplicacio no funcionara al servidor, si aixi es vol, cal seguir els 9 pasos de l'apartat anterior)
