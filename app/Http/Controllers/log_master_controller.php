@@ -36,6 +36,25 @@ class log_master_controller extends Controller
             $newpair = new Pair();
             $newpair->elem1 = $object["variable"];
             $newpair->elem2 = $object["valor"];
+            if($newpair->elem1 == "rate")
+            {
+                $var = intval($newpair->elem2);
+                $var = $var/1000000;
+                $new_var = strval($var);
+                $new_var = $new_var ."Mb/s";
+                $newpair->elem2 = $new_var;
+            }
+            else if ($newpair->elem1 == "estat")
+            {
+                if($newpair->elem2 == "1")
+                {
+                    $newpair->elem2 = "up";
+                }
+                else
+                {
+                    $newpair->elem2 = "down";
+                }
+            }
             $result[$object["objecte"]][$object["variable"]] = $newpair;
 
         }
