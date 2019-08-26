@@ -19,6 +19,12 @@ class RepetidorsController extends Controller
         return view('repetidors.index')->with ('llista_repetidors', $llista_repetidors);
     }
 
+    public function index2()
+    {
+        $llista_repetidors = repetidors::all();
+        return view('repetidors.index2')->with ('llista_repetidors', $llista_repetidors);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

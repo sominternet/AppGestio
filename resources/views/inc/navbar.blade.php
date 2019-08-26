@@ -5,6 +5,7 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item"> <a class="nav-link" href="/">Index</a> </li>
             <li class="nav-item"> <a class="nav-link " href="/repetidors">Repetidors</a> </li>
+            <li class="nav-item"> <a class="nav-link " href="/repetidors_log">Logs</a> </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">

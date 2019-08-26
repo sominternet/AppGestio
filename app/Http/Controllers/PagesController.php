@@ -13,6 +13,6 @@ class PagesController extends Controller
     }
     public function repetidors()
     {
-
+        
     }
 }
