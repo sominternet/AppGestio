@@ -1,6 +1,5 @@
-MOyIDKfmYImuGZFlUTkS
-
-
+sudo : Me2yXf91f4ZqP4plEIFQ
+database : SOZ3dMEkJCJs74ffJBqq
 
  part del deploy script
 composer install --no-interaction --prefer-dist --optimize-autoloader
