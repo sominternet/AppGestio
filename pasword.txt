@@ -1,11 +1,3 @@
 sudo : Me2yXf91f4ZqP4plEIFQ
 database : SOZ3dMEkJCJs74ffJBqq
 
- part del deploy script
-composer install --no-interaction --prefer-dist --optimize-autoloader
-echo "" | sudo -S service php7.3-fpm reload
-
-if [ -f artisan ]
-then
-    php artisan migrate --force
-fi

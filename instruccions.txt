@@ -2,10 +2,11 @@ Per a fer funcionar la aplicació fora de l'area local s'han de seguir alguns pa
 1-Realitzar un git-commit i un git-push
 2-accedir a la pagina de digital ocean
 3-Al droplet de la pagina en qüestió, hi ha un apartat anomenat acess, alli hi ha un botó que posa Launch console.
-4-Un cop presionat el botó s'obrirà una consola de login, accedir amb l'usuari forge i la contrasenya MOyIDKfmYImuGZFlUTkS
+4-Un cop presionat el botó s'obrirà una consola de login, accedir amb l'usuari forge i la contrasenya Me2yXf91f4ZqP4plEIFQ
 5- entrar a la unica carpeta que hi ha
 6-obrir el fitxer .env amb l'editor de text nano, comanda: nano .env
-7-modificar aquest fitxer per a posar els parametres d'acces a la base de dades, s'han de modificar els següents camps: DB_CONNECTION=mysql
+7-modificar aquest fitxer per a posar els parametres d'acces a la base de dades, s'han de modificar els següents camps: 
+DB_CONNECTION=mysql
 DB_HOST=134.0.10.65
 DB_PORT=3306
 DB_DATABASE=auguteaplicacions
