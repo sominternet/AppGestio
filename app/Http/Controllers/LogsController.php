@@ -15,29 +15,36 @@ class LogsController extends Controller
 
     public function alerts()
     {
-        $alertes =array(
+        $llistat = array
+        (
 
-            array()
         );
-        $repetidors_routers = DB::select('select * from repetidors_routers');
-        foreach($repetidors_routers as $repetidor_router)
+        $repetidors = DB::select('select * from repetidors');
+        $repetidors_amb_alertes = array();
+        foreach($repetidors as $repetidor)
         {
-            $log_master_routers = DB::select('select * from log_master_routers where id_router = ' .$repetidor_router->id_router);
-            foreach($log_master_routers as $object)
+
+            $alertes = DB::select('select * from incidencies where id_repetidor = ' .$repetidor->codi);
+            if(count($alertes) > 0)
             {
-                if($object->variable == "estat" or $object->variable == "rate"){
-                    $last2logs = DB::select('select * from log_routers where id_repetidor_router = ' .$repetidor_router->id_repetidor_router .' and id_log_master_routers = ' .$object->id_log_master_routers .' ORDER BY id_log_routers desc LIMIT 2');
-
-                    if($last2logs[0]->valor != $last2logs[1]->valor)
-                    {
-                        $alertes[] = array("ip" => $repetidor_router->ip,"repetidor" => $repetidor_router->id_repetidor, "router" => $repetidor_router->comentaris,"objecte" => $object->objecte, "variable" => $object->variable,"valor1" =>  $last2logs[1]->valor, "valor2" => $last2logs[0]->valor  );
-                    }
-                }
-
+                $llistat[] = array("repetidor" => $repetidor, "teincidencia" => "si");
             }
+            else $llistat[] = array("repetidor" => $repetidor, "teincidencia" => "no");
         }
-        return view('alertes.index')->with('alertes',$alertes);
+
+        //return $llistat;
+        return view ('alertes.index')->with('llistat',$llistat);
+    }
+
+    public function alerts_repetidor($id)
+    {
+        $alertes = DB::select('select * from incidencies where id_repetidor = ' .$id);
         return $alertes;
+    }
+
+    public function destroy($id)
+    {
+        DB::delete('delete from incidencies where id_incidencia = ' .$id);
     }
 
 

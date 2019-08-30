@@ -18,5 +18,6 @@ Route::resource('repetidors','RepetidorsController');
 Route::get('/repetidors_log/{id}', ['uses' =>'repetidors_routers_controller@index']);
 Route::get('/repetidors_log/{id}/{id_routers}', ['uses' =>'log_master_controller@index']);
 Route::get('/alertes', 'LogsController@alerts');
+Route::get('/alertes/{id}', ['uses'=>'LogsController@alerts_repetidor']);
 
 
