@@ -29,7 +29,6 @@ class LogsController extends Controller
             {
                 $llistat[] = array("repetidor" => $repetidor, "teincidencia" => "si");
             }
-            else $llistat[] = array("repetidor" => $repetidor, "teincidencia" => "no");
         }
 
         //return $llistat;
