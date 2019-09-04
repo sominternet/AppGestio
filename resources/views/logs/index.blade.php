@@ -9,7 +9,7 @@
                     <div class = "well">
                         <h3> <li class = "list-group-item">{{$key}}
                         @foreach($result[$key] as $variable)
-                            <h5> {{$variable->elem1}} : {{$variable->elem2}}</h5>
+                            <h5> {{$variable["variable"]}} : {{$variable["valor"]}}</h5> <h6>registrat el {{$variable["data_registre"]}}</h6>
                         @endforeach
                         </li></h3>
                     </div>

@@ -17,7 +17,13 @@ Route::get('/repetidors_log', 'RepetidorsController@index2');
 Route::resource('repetidors','RepetidorsController');
 Route::get('/repetidors_log/{id}', ['uses' =>'repetidors_routers_controller@index']);
 Route::get('/repetidors_log/{id}/{id_routers}', ['uses' =>'log_master_controller@index']);
+Route::get('/alertes/destroy_all','LogsController@destroy_all');
 Route::get('/alertes', 'LogsController@alerts');
 Route::get('/alertes/{id}', ['uses'=>'LogsController@alerts_repetidor']);
+Route::resource('logs','LogsController');
+Route::get('/alertes/destroy_repetidor/{id}', ['uses'=>'LogsController@destroy_repetidor']);
+
+
+
 
 

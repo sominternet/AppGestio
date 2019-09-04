@@ -27,6 +27,7 @@ class log_master_controller extends Controller
             $object_values[$i]["objecte"] = $object_list[$i]->objecte;
             $object_values[$i]["variable"] = $object_list[$i]->variable;
             $object_values[$i]["valor"] = (DB::select('select * from log_routers where id_log_master_routers = '.$object_list[$i]->id_log_master_routers ." ORDER BY id_log_routers desc LIMIT 1", [1]))[0]->valor;
+            $object_values[$i]["data_registre"] = (DB::select('select * from log_routers where id_log_master_routers = '.$object_list[$i]->id_log_master_routers ." ORDER BY id_log_routers desc LIMIT 1", [1]))[0]->data_registre;
 
         }
         $result = array
@@ -35,31 +36,40 @@ class log_master_controller extends Controller
         );
         foreach($object_values as &$object)
         {
-        if(/*$object["variable"] != "bin" and $object["variable"] != "bout" and*/ count($object) > 0){
+        if($object["variable"] != "bin" and $object["variable"] != "bout" and count($object) > 0){
 
-                $newpair = new Pair();
-                $newpair->elem1 = $object["variable"];
-                $newpair->elem2 = $object["valor"];
-                if($newpair->elem1 == "rate")
+                $newobj= array();
+                $newobj["variable"] = $object["variable"];
+                $newobj["valor"] = $object["valor"];
+                $newobj["data_registre"] = $object["data_registre"];
+                if($newobj["variable"] == "rate")
                 {
-                    $var = intval($newpair->elem2);
+                    $var = intval($newobj["valor"]);
                     $var = $var/1000000;
                     $new_var = strval($var);
                     $new_var = $new_var ."Mb/s";
-                    $newpair->elem2 = $new_var;
+                    $newobj["valor"] = $new_var;
                 }
-                else if ($newpair->elem1 == "estat")
+                else if ($newobj["variable"] == "estat")
                 {
-                    if($newpair->elem2 == "1")
+                    if($newobj["valor"] == "1")
                     {
-                        $newpair->elem2 = "up";
+                        $newobj["valor"] = "up";
                     }
                     else
                     {
-                        $newpair->elem2 = "down";
+                        $newobj["valor"] = "down";
                     }
                 }
-                $result[$object["objecte"]][$object["variable"]] = $newpair;
+                else if ($newobj["variable"] == "temp")
+                {
+                    $numeric = intval($newobj["valor"]);
+                    $numeric = $numeric/10;
+                    $numeric = strval($numeric);
+                    $numeric = $numeric."ºC";
+                    $newobj["valor"] = $numeric;
+                }
+                $result[$object["objecte"]][$object["variable"]] = $newobj;
             }
         }
         $keys = array_keys($result);

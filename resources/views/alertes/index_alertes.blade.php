@@ -3,18 +3,20 @@
 @section('content')
     <h1>Alertes</h1>
     <ul class = "list-group">
-        @if(count($llista_repetidors) > 0)
-            @foreach($llista_repetidors as $repetidor)
+        @if(count($llista_alertes) > 0)
+            @foreach($llista_alertes as $alerta)
                 <div class = "well">
-
+                    <h4> <li class = "list-group-item">
+                    <u>Incidencia {{$alerta->id_incidencia}} amb data {{$alerta->data_incidencia}}</u>
+                    <h6>{{$alerta->incidencia}}</h6>
                     <a>
-                    {!!Form::open(['action' => ['RepetidorsController@destroy', $repetidor->codi], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                    {!!Form::open(['action' => ['LogsController@destroy', $alerta->id_incidencia], 'method' => 'POST', 'class' => 'pull-right'])!!}
                         {{Form::hidden('_method', 'DELETE')}}
-                        {{Form::submit('Borrar', ['class' => 'btn btn-danger'])}}
+                        {{Form::submit('Esborrar', ['class' => 'btn btn-danger'])}}
                     {!!Form::close()!!}
                     </a>
 
-                    </li> </h5>
+                    </li> </h4>
                 </div>
 
             @endforeach
